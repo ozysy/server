@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
-import connect from './database/conn.js';
+import connect from './database/conn.mjs';
 import router from './router/route.js';
 
 const app = express()
@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
 });
 
 const corsOptions = {
-    origin: 'https://<ваше_имя_пользователя>.github.io', // Замените на фактический URL клиентской части
+    origin: 'https://ozysy.github.io/ArchLite', // Замените на фактический URL клиентской части
     optionsSuccessStatus: 200
   }
   
