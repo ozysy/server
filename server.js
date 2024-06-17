@@ -5,9 +5,9 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import connect from './database/conn.js';
 import router from './router/route.js';
+import path from 'path';
 
-const app = express();
-
+const app = express()
 
 // middlewares
 app.use(express.json());
@@ -22,19 +22,10 @@ app.get('/', (req, res) => {
     res.status(201).json("home GET Request");
 });
 
-// Serve static files from the React app
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
-app.use(express.static(path.join(__dirname, '../client/build')));
 
 // api routes
 app.use('/api', router)
-
-// Catch-all handler to serve React's index.html for any unknown routes
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
-});
 
 // start server только, когда мы подключены
 connect().then(() => {
